@@ -1,9 +1,12 @@
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head>
-    <title>My Website Home Page</title>
-</head>
-<body>
-  <h1>Welcome to my website</h1>
-  <p>Now hosted on Amazon S3!</p>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Memories of a Squeaking Flying Caterpillar</title>
+    <link rel="stylesheet" href="css/image.css">
+    <script src="js/image.js"></script>
+  </head>
+  <body>
+    <img id="image" src="https://s3-us-west-1.amazonaws.com/blog.chiarng.com/img/2014/10/1.JPG" onload="resizeToMax(this.id)">
+  </body>
 </html>
