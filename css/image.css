@@ -4,7 +4,7 @@ body {
 }
 
 div {
-	height: 100vh;;
+	height: 100vh;
 }
 
 #bg {
@@ -19,6 +19,34 @@ div {
     -ms-animation: fadein 3s; /* Internet Explorer */
     -o-animation: fadein 3s; /* Opera < 12.1 */
     animation: fadein 3s;
+
+    z-index: -1;
+}
+
+#left {
+	position: fixed;
+	left: 0px;
+	width: 25%;
+    padding: 10px;
+    border: 10px;
+    margin: 5px;
+	background: gray;
+	opacity: 0.5;
+
+	z-index: 2;
+}
+
+#right {
+	position: fixed;
+	right: 0px;
+	width: 40%;
+    padding: 10px;
+    border: 10px;
+    margin: 5px;
+	background: gray;
+	opacity: 0.5;
+
+	z-index: 3;
 }
 
 @keyframes fadein {
