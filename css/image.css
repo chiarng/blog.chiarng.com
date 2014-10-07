@@ -7,8 +7,8 @@ div {
 	height: 100vh;
 }
 
-#bg {
-	background-image: url(https://s3-us-west-1.amazonaws.com/blog.chiarng.com/img/2014/10/2.JPG);
+#bg, #blurbg {
+	background-image: url(https://s3-us-west-1.amazonaws.com/blog.chiarng.com/img/2014/10/3.JPG);
 	background-position: center center;
 	background-attachment: fixed; 
 	background-repeat: no-repeat;
@@ -23,30 +23,54 @@ div {
     z-index: -1;
 }
 
-#left {
+#blurbg {
+	position: absolute;
+	top: 0px;
+ 	right: 0px;
+ 	bottom: 0px;
+ 	left: 0px;
+
+ 	filter: blur(5px);
+	-webkit-filter: blur(5px);
+	-moz-filter: blur(5px);
+
+	z-index: 50;
+}
+
+#leftpanel {
 	position: fixed;
 	left: 0px;
 	width: 25%;
     padding: 10px;
     border: 10px;
     margin: 5px;
-	background: gray;
-	opacity: 0.5;
 
-	z-index: 2;
+	z-index: 20;
 }
 
-#right {
+#leftcontent {
+	position: relative;
+	background: white;
+	opacity: 0.4;
+	z-index: 70;
+}
+
+#rightpanel {
 	position: fixed;
 	right: 0px;
 	width: 40%;
     padding: 10px;
     border: 10px;
     margin: 5px;
-	background: gray;
-	opacity: 0.5;
 
-	z-index: 3;
+	z-index: 21;
+}
+
+#rightcontent {
+	position: relative;
+	background: white;
+	opacity: 0.4;
+	z-index: 71;
 }
 
 @keyframes fadein {
