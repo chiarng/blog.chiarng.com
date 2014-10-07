@@ -41,9 +41,9 @@ div {
 	position: fixed;
 	left: 0px;
 	width: 25%;
-    padding: 10px;
-    border: 10px;
-    margin: 5px;
+    padding: 3px;
+    border: 0px;
+    margin: 12px;
 
 	z-index: 20;
 }
@@ -52,6 +52,8 @@ div {
 	position: relative;
 	background: white;
 	opacity: 0.4;
+	padding: 20px;
+
 	z-index: 70;
 }
 
@@ -59,9 +61,9 @@ div {
 	position: fixed;
 	right: 0px;
 	width: 40%;
-    padding: 10px;
-    border: 10px;
-    margin: 5px;
+    padding: 3px;
+    border: 0px;
+    margin: 12px;
 
 	z-index: 21;
 }
@@ -70,6 +72,8 @@ div {
 	position: relative;
 	background: white;
 	opacity: 0.4;
+	padding: 20px;
+
 	z-index: 71;
 }
 
