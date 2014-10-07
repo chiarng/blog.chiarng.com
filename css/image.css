@@ -1,5 +1,16 @@
-.currentphoto img {
-	background-repeat:no-repeat;
-	background-size:contain;
-	background-position:center;
+body {
+	margin: 0px;
+}
+
+div {
+	height: 100vh;
+}
+
+#bg {
+	background: url(https://s3-us-west-1.amazonaws.com/blog.chiarng.com/img/2014/10/2.JPG) no-repeat center center fixed; 
+	background-repeat: no-repeat;
+ 	-webkit-background-size: cover;
+ 	-moz-background-size: cover;
+ 	-o-background-size: cover;
+ 	background-size: cover;
 }
