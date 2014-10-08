@@ -12,6 +12,10 @@ div {
 	-webkit-box-sizing: border-box;
 }
 
+p {
+	margin: 0;
+}
+
 #bg, #blurbg {
 	background-image: url(https://s3-us-west-1.amazonaws.com/blog.chiarng.com/img/2014/10/3.JPG);
 	background-position: center center;
