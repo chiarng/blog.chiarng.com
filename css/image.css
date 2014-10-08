@@ -125,6 +125,14 @@ p {
 	z-index: 81;
 }
 
+#imgLink {
+
+}
+
+#linklist {
+
+}
+
 @keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
