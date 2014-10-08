@@ -9,11 +9,12 @@
     	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
 		-->
 		<script src="js/utility.js"></script>
+		<script src="js/exif.js"></script>
 	</head>
-	<body>
+	<body onload="imgSwap()">
  		<div id="bg">
  			<div id="leftpanel">
- 				<div id="blurbg"></div>
+ 				<div id="leftblur"></div>
  				<div id="leftwhitebox">
  					<div id="leftcontent">
  						<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna diam, euismod eu suscipit vitae, ultricies sed urna. Proin porttitor placerat arcu, quis efficitur lacus posuere eu. Donec aliquet elementum convallis. Donec semper justo sed augue venenatis rhoncus. Sed a massa finibus orci volutpat consectetur in et lectus. Phasellus ultricies sapien dui, a tincidunt tortor semper vel. Suspendisse volutpat condimentum vehicula.
@@ -29,9 +30,10 @@ Etiam id ante consequat, pretium lacus sit amet, dapibus augue. Cras eget faucib
  				</div>
  			</div>
  			<div id="rightpanel">
- 				<div id="blurbg"></div>
+ 				<div id="rightblur"></div>
  				<div id="rightwhitebox"></div>
- 					<div id="rightcontent"></div>
+ 					<div id="rightcontent">
+ 					</div>
  			</div>
  			<div class="clear"></div>
  		</div>

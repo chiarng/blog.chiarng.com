@@ -16,7 +16,7 @@ p {
 	margin: 0;
 }
 
-#bg, #blurbg {
+#bg, #leftblur, #rightblur {
 	background-image: url(https://s3-us-west-1.amazonaws.com/blog.chiarng.com/img/2014/10/3.JPG);
 	background-position: center center;
 	background-attachment: fixed; 
@@ -32,7 +32,7 @@ p {
     z-index: -1;
 }
 
-#blurbg {
+#leftblur, #rightblur {
 	position: absolute;
 	top: 0px;
  	right: 0px;
