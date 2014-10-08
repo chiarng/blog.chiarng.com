@@ -56,18 +56,30 @@ div {
 	z-index: 20;
 }
 
-#leftcontent {
+#leftwhitebox {
 	position: relative;
 	display: block;
 	background: white;
 	opacity: 0.4;
 	height: 100%;
-	padding: 20px;
+	padding: 10px;
 	margin: 1px;
+	border: 1px;
+	overflow: hidden;
+
+	z-index: 70;
+}
+
+#leftcontent {
+	position: relative;
+	display: block;
+	height: 98%;
+	padding: 5px;
+	margin: 5px;
 	border: 1px;
 	overflow: auto;
 
-	z-index: 70;
+	z-index: 80;
 }
 
 #rightpanel {
@@ -83,18 +95,30 @@ div {
 	z-index: 21;
 }
 
-#rightcontent {
+#rightwhitebox {
 	position: relative;
 	display: block;
 	background: white;
 	opacity: 0.4;
 	height: 100%;
-	padding: 20px;
+	padding: 10px;
 	margin: 1px;
+	border: 1px;
+	overflow: hidden;
+
+	z-index: 71;
+}
+
+#rightcontent {
+	position: relative;
+	display: block;
+	height: 98%;
+	padding: 5px;
+	margin: 5px;
 	border: 1px;
 	overflow: auto;
 
-	z-index: 71;
+	z-index: 81;
 }
 
 @keyframes fadein {
