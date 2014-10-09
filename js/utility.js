@@ -1,6 +1,10 @@
 // JavaScript Document
 
-var apiURL="https://s3-us-west-1.amazonaws.com/blog.chiarng.com/";
+// variable declarations
+var apiURL="https://s3-us-west-1.amazonaws.com/blog.chiarng.com/img/";
+var imgList = ["20141001","20141002","20141003"];
+var imgTitle = ["Lighthouse","Rose","Sunset"];
+var imgLinks = '';
 
 //swaps background image give imgURL
 function imgSwap(imgURL) {
@@ -17,27 +21,32 @@ function addEvent(element, event, func) {
 		return element.addEventListener(event, func, false);
 };
 
-// loop through list of photo names
-// create hyperlink given date, title, imgURL, id
-// addEvent to the hyperlink given id and imgURL
+function init() {
+	// load latest background image
+	imgSwap(apiURL + imgList[imgList.length-1].substring(0,4) + "/" + imgList[imgList.length-1].substring(4,6) + "/" + imgList[imgList.length-1].substring(6,9) + ".JPG");
 
-var imgList = [1,2,3];
-var x = '';
+	// loop through list of photos and create hyperlink given date, title, imgURL, id
+	for (i=1; i<imgList.length+1; i++) {
+		imgLinks = '<a href id="imglink' + i + '">' + imgTitle[i-1] + '</a> <br>' + imgLinks;
+	};
 
-for (i=1; i<imgList.length+1; i++) {
-	var x = '<a href id="imglink' + i + '"> Date and Title of Image </a> <br>' + x;
+	// replace placeholder with hyperlinks
+	document.getElementById("imglinkholder").innerHTML = imgLinks;
+
+	// addEvent to the hyperlink given id and imgURL
+	for (ii=1; ii<imgList.length+1; ii++) {
+		(function (ii) {
+			addEvent (document.getElementById('imglink' + ii),'click',function(e) {
+				e.preventDefault();e.stopPropagation();imgSwap(apiURL + imgList[ii-1].substring(0,4) + "/" + imgList[ii-1].substring(4,6) + "/" + imgList[ii-1].substring(6,9) + ".JPG");
+				});
+		})(ii);
+	};
 };
-document.getElementById("imglist").innerHTML = x;
 
-for (ii=1; ii<imgList.length+1; ii++) {
-	(function (ii) {
-		addEvent (document.getElementById('imglink' + ii),'click',function(e) {
-			e.preventDefault();e.stopPropagation();imgSwap(apiURL + "img/2014/10/" + ii + ".JPG");
-			});
-	})(ii);
-}
-
-var imgURL = apiURL + "img/2014/10/1.JPG";
-var imgLink = document.getElementById('imglink');
-
-addEvent (imgLink,'click',function(e){e.preventDefault();e.stopPropagation();imgSwap(imgURL);});
+// window.onload
+var readyStateCheckInterval = setInterval(function() {
+    if (document.readyState === "complete") {
+        init();
+        clearInterval(readyStateCheckInterval);
+    }
+}, 10);

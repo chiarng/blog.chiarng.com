@@ -17,7 +17,6 @@ p {
 }
 
 #bg, #leftblur, #rightblur {
-	background-image: url(https://s3-us-west-1.amazonaws.com/blog.chiarng.com/img/2014/10/3.JPG);
 	background-position: center center;
 	background-attachment: fixed; 
 	background-repeat: no-repeat;
@@ -125,11 +124,7 @@ p {
 	z-index: 81;
 }
 
-#imglink {
-
-}
-
-#linklist {
+#imglinkholder {
 
 }
 
