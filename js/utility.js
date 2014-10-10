@@ -19,18 +19,20 @@ function exifSwap(imgURL) {
 	var invImg = document.createElement('img'); 
 	invImg.onload = function () {
 		EXIF.getData(invImg, function() {
-		document.getElementById("exifholder").innerHTML = 
-    		"Camera: " + EXIF.getTag(this,"Model") + "<br>" +
-    		"Date and Time: " + EXIF.getTag(this,"DateTimeOriginal") + "<br>" +
-    		"F-stop: f/" + EXIF.getTag(this,"FNumber") + "<br>" +
-    		"Exposure Time: 1/" + 1/EXIF.getTag(this,"ExposureTime") + " seconds <br>" +
-    		"ISO speed: " + EXIF.getTag(this,"ISOSpeedRatings") + "<br>" +
-    		"Focal Length: " + EXIF.getTag(this,"FocalLength") + "<br>" +
-    		"Exposure Program: " + EXIF.getTag(this,"ExposureProgram") + "<br>" +
-    		"Exposure Bias: " + EXIF.getTag(this,"ExposureBias") + "<br>" +
-    		"Metering Mode: " + EXIF.getTag(this,"MeteringMode") + "<br>" +
-    		"Flash: " + EXIF.getTag(this,"Flash") + "<br>" +
-    		"White Balance Mode: " + EXIF.getTag(this,"WhiteBalance");
+			var expoTime = EXIF.getTag(this,"ExposureTime");
+			if (expoTime < 1) {expoTime = "1/" + 1/expoTime};
+			document.getElementById("exifholder").innerHTML = 
+	    		"Camera: " + EXIF.getTag(this,"Model") + "<br>" +
+	    		"Date and Time: " + EXIF.getTag(this,"DateTimeOriginal") + "<br>" +
+	    		"F-stop: f/" + EXIF.getTag(this,"FNumber") + "<br>" +
+	    		"Exposure Time: " + expoTime + " seconds <br>" +
+	    		"ISO speed: " + EXIF.getTag(this,"ISOSpeedRatings") + "<br>" +
+	    		"Focal Length: " + EXIF.getTag(this,"FocalLength") + "<br>" +
+	    		"Exposure Program: " + EXIF.getTag(this,"ExposureProgram") + "<br>" +
+	    		"Exposure Bias: " + EXIF.getTag(this,"ExposureBias") + "<br>" +
+	    		"Metering Mode: " + EXIF.getTag(this,"MeteringMode") + "<br>" +
+	    		"Flash: " + EXIF.getTag(this,"Flash") + "<br>" +
+	    		"White Balance Mode: " + EXIF.getTag(this,"WhiteBalance");
 		});
 	};
 	invImg.src = imgURL;
