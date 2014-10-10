@@ -124,9 +124,9 @@ p {
 	z-index: 81;
 }
 
-#imglinkholder {
+#imglinkholder {}
 
-}
+#exifholder {}
 
 @keyframes fadein {
     from { opacity: 0; }
