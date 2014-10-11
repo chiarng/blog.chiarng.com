@@ -12,6 +12,7 @@ function imgSwap(imgURL) {
 	document.getElementById('leftblur').style.backgroundImage = "url(" + imgURL + ")";
 	document.getElementById('rightblur').style.backgroundImage = "url(" + imgURL + ")";
 	exifSwap(imgURL);
+	commentSwap(imgURL);
 };
 
 // swaps EXIF given imgURL
@@ -36,6 +37,25 @@ function exifSwap(imgURL) {
 		});
 	};
 	invImg.src = imgURL;
+};
+
+// swaps Disqus comments
+function commentSwap(imgURL) {
+	var disqus_shortname = 'chiarng';
+    var disqus_identifier = imgURL.substring(56,66);
+    var disqus_url = "http://blog.chiarng.com/#!" + imgURL.substring(56,66);
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    DISQUS.reset({
+  		reload: true,
+  		config: function () {  
+    		this.page.identifier = imgURL.substring(56,66);  
+    		this.page.url = "http://blog.chiarng.com/#!" + imgURL.substring(56,66);
+  		}
+	}); 
 };
 
 // cross-browser support for attaching event listeners
