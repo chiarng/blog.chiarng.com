@@ -3,7 +3,7 @@
 // variable declarations
 var apiURL="https://s3-us-west-1.amazonaws.com/blog.chiarng.com/img/";
 var imgList = ["20131201","20131202","20131203","20140901","20140902","20141001","20141002","20141003"];
-var imgTitle = ["Girl1","Girl2","Girl3","Girl4","Girl5","Lighthouse","Rose","Sunset"];
+var imgTitle = ["Girl1","Dish Trail","Girl3","Girl4","Girl5","Lighthouse","Rose","Sunset"];
 var imgLinks = '';
 
 // swaps background image given imgURL
