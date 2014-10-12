@@ -74,6 +74,40 @@ function init() {
 	// load latest background image
 	imgSwap(apiURL + imgList[imgList.length-1].substring(0,4) + "/" + imgList[imgList.length-1].substring(4,6) + "/" + imgList[imgList.length-1].substring(6,9) + ".jpg");
 
+	// resize circles to make more obvious
+	document.getElementById('leftcirc').style.cssText = 
+		'position: fixed;' +
+		'left: 0;' +
+		'top: 0;' +
+		'opacity: 1;' +
+		'margin: 20px;' +
+		'background-color: rgba(255, 255, 255, 0);' +
+		'border: 1px solid white;' +
+		'height: 15px;' +
+		'width: 15px;' +
+		'border-radius: 50%;' +
+		'z-index: 60;' +
+	    '-webkit-transition:width 3s ease-in-out, height 3s ease-in-out;' +
+	    '-moz-transition:width 3s ease-in-out, height 3s ease-in-out;' +
+	    '-o-transition:width 3s ease-in-out, height 3s ease-in-out;' +
+	    'transition:width 3s ease-in-out, height 3s ease-in-out;';
+	document.getElementById('rightcirc').style.cssText = 
+		'position: fixed;' +
+		'right: 0;' +
+		'top: 0;' +
+		'opacity: 1;' +
+		'margin: 20px;' +
+		'background-color: rgba(255, 255, 255, 0);' +
+		'border: 1px solid white;' +
+		'height: 15px;' +
+		'width: 15px;' +
+		'border-radius: 50%;' +
+		'z-index: 60;' +
+	    '-webkit-transition:width 3s ease-in-out, height 3s ease-in-out;' +
+	    '-moz-transition:width 3s ease-in-out, height 3s ease-in-out;' +
+	    '-o-transition:width 3s ease-in-out, height 3s ease-in-out;' +
+	    'transition:width 3s ease-in-out, height 3s ease-in-out;';
+
 	// loop through list of photos and create hyperlink given date, title, imgURL, id
 	for (i=1; i<imgList.length+1; i++) {
 		imgLinks = '<a href id="imglink' + i + '">' + imgTitle[i-1] + '</a> <br>' + imgLinks;

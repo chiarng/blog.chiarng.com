@@ -53,12 +53,9 @@ p {
 	margin: 20px;
 	background-color: rgba(255, 255, 255, 0);
 	border: 1px solid white;
-	height: 15px;
-	width: 15px;
-	
+	height: 150px;
+	width: 150px;
 	border-radius: 50%;
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
 
 	z-index: 60;	
 }
@@ -110,12 +107,9 @@ p {
 	margin: 20px;
 	background-color: rgba(255, 255, 255, 0);
 	border: 1px solid white;
-	height: 15px;
-	width: 15px;
-	
+	height: 150px;
+	width: 150px;
 	border-radius: 50%;
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
 
 	z-index: 61;	
 }
