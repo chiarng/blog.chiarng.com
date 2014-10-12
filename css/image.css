@@ -45,6 +45,24 @@ p {
 	z-index: 50;
 }
 
+#leftcirc {
+	position: fixed;
+	left: 0;
+	top: 0;
+	opacity: 1;
+	margin: 20px;
+	background-color: rgba(255, 255, 255, 0);
+	border: 1px solid white;
+	height: 15px;
+	width: 15px;
+	
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+
+	z-index: 60;	
+}
+
 #leftpanel {
 	position: fixed;
 	display: block;
@@ -62,7 +80,7 @@ p {
 	position: relative;
 	display: block;
 	background: white;
-	opacity: 0.4;
+	opacity: 0;
 	height: 100%;
 	padding: 10px;
 	margin: 1px;
@@ -84,6 +102,24 @@ p {
 	z-index: 80;
 }
 
+#rightcirc {
+	position: fixed;
+	right: 0;
+	top: 0;
+	opacity: 1;
+	margin: 20px;
+	background-color: rgba(255, 255, 255, 0);
+	border: 1px solid white;
+	height: 15px;
+	width: 15px;
+	
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+
+	z-index: 61;	
+}
+
 #rightpanel {
 	position: fixed;
 	display: block;
@@ -101,7 +137,7 @@ p {
 	position: relative;
 	display: block;
 	background: white;
-	opacity: 0.4;
+	opacity: 0;
 	height: 100%;
 	padding: 10px;
 	margin: 1px;
