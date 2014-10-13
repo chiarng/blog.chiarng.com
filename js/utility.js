@@ -62,6 +62,12 @@ function commentSwap(imgURL) {
 	};
 };
 
+// state toggler 
+function toggle(element1, state1, state2) {
+	var element1 = document.getElementById(element1);
+	element1.setAttribute('data-state', element1.getAttribute('data-state') === state1 ? state2 : state1);
+};
+
 // cross-browser support for attaching event listeners
 function addEvent(element, event, func) {
 	if (element.attachEvent)
@@ -75,38 +81,14 @@ function init() {
 	imgSwap(apiURL + imgList[imgList.length-1].substring(0,4) + "/" + imgList[imgList.length-1].substring(4,6) + "/" + imgList[imgList.length-1].substring(6,9) + ".jpg");
 
 	// resize circles to make more obvious
-	document.getElementById('leftcirc').style.cssText = 
-		'position: fixed;' +
-		'left: 0;' +
-		'top: 0;' +
-		'opacity: 1;' +
-		'margin: 20px;' +
-		'background-color: rgba(255, 255, 255, 0);' +
-		'border: 1px solid white;' +
-		'height: 15px;' +
-		'width: 15px;' +
-		'border-radius: 50%;' +
-		'z-index: 60;' +
-	    '-webkit-transition:width 3s ease-in-out, height 3s ease-in-out;' +
-	    '-moz-transition:width 3s ease-in-out, height 3s ease-in-out;' +
-	    '-o-transition:width 3s ease-in-out, height 3s ease-in-out;' +
-	    'transition:width 3s ease-in-out, height 3s ease-in-out;';
-	document.getElementById('rightcirc').style.cssText = 
-		'position: fixed;' +
-		'right: 0;' +
-		'top: 0;' +
-		'opacity: 1;' +
-		'margin: 20px;' +
-		'background-color: rgba(255, 255, 255, 0);' +
-		'border: 1px solid white;' +
-		'height: 15px;' +
-		'width: 15px;' +
-		'border-radius: 50%;' +
-		'z-index: 60;' +
-	    '-webkit-transition:width 3s ease-in-out, height 3s ease-in-out;' +
-	    '-moz-transition:width 3s ease-in-out, height 3s ease-in-out;' +
-	    '-o-transition:width 3s ease-in-out, height 3s ease-in-out;' +
-	    'transition:width 3s ease-in-out, height 3s ease-in-out;';
+	document.getElementById('leftcirc').setAttribute('data-state','closed');
+	document.getElementById('rightcirc').setAttribute('data-state','closed');	
+
+	// on-off state for panels
+	addEvent (document.getElementById('leftcirc'), 'click', toggle.bind(null, 'leftcirc', 'closed', 'open'));
+	addEvent (document.getElementById('leftcirc'), 'click', toggle.bind(null, 'leftpanel', 'closed', 'open'));
+	addEvent (document.getElementById('rightcirc'), 'click', toggle.bind(null, 'rightcirc', 'closed', 'open'));
+	addEvent (document.getElementById('rightcirc'), 'click', toggle.bind(null, 'rightpanel', 'closed', 'open'));
 
 	// loop through list of photos and create hyperlink given date, title, imgURL, id
 	for (i=1; i<imgList.length+1; i++) {
