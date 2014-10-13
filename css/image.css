@@ -24,7 +24,7 @@ p {
     animation: fadein 3s;
 	-webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 12.1 */
     -moz-animation: fadein 3s; /* Firefox < 16 */
-    -ms-animation: fadein 3s; /* Internet Explorer */
+    -ms-animation: fadein 3; /* Internet Explorer */
 	-o-animation: fadein 3s; /* Opera < 12.1 */
 
     z-index: 10;
@@ -90,21 +90,31 @@ p {
     border: 1px;
     margin: 12px;
 
-	-webkit-animation: fadein 2s, fadeout 2s; /* Safari, Chrome and Opera > 12.1 */
-    -moz-animation: fadein 2s, fadeout 2s; /* Firefox < 16 */
-    -ms-animation: fadein 2s, fadeout 2s; /* Internet Explorer */
-    -o-animation: fadein 2s, fadeout 2s; /* Opera < 12.1 */
-    animation: fadein 2s, fadeout 2s;
-
 	z-index: 20;
 }
 
 #leftpanel[data-state=closed] {
-	display: none;
+	opacity: 0;
+
+	-webkit-animation: fadeout 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadeout 2s; /* Firefox < 16 */
+    -ms-animation: fadeout 2s; /* Internet Explorer */
+    -o-animation: fadeout 2s; /* Opera < 12.1 */
+    animation: fadeout 2s;
 }
 
 #leftpanel[data-state=open] {
 	display: inherit;
+
+	-webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s; /* Firefox < 16 */
+    -ms-animation: fadein 2s; /* Internet Explorer */
+    -o-animation: fadein 2s; /* Opera < 12.1 */
+    animation: fadein 2s;
+}
+
+#leftpanel[data-state=preload] {
+	display: none;
 }
 
 #leftwhitebox {
@@ -181,11 +191,27 @@ p {
 }
 
 #rightpanel[data-state=closed] {
-	display: none;
+	opacity: 0;
+
+	-webkit-animation: fadeout 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadeout 2s; /* Firefox < 16 */
+    -ms-animation: fadeout 2s; /* Internet Explorer */
+    -o-animation: fadeout 2s; /* Opera < 12.1 */
+    animation: fadeout 2s;
 }
 
 #rightpanel[data-state=open] {
 	display: inherit;
+
+	-webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s; /* Firefox < 16 */
+    -ms-animation: fadein 2s; /* Internet Explorer */
+    -o-animation: fadein 2s; /* Opera < 12.1 */
+    animation: fadein 2s;
+}
+
+#rightpanel[data-state=preload] {
+	display: none;
 }
 
 #rightwhitebox {

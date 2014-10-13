@@ -82,13 +82,13 @@ function init() {
 
 	// resize circles to make more obvious
 	document.getElementById('leftcirc').setAttribute('data-state','closed');
-	document.getElementById('rightcirc').setAttribute('data-state','closed');	
+	document.getElementById('rightcirc').setAttribute('data-state','closed');
 
 	// on-off state for panels
 	addEvent (document.getElementById('leftcirc'), 'click', toggle.bind(null, 'leftcirc', 'closed', 'open'));
-	addEvent (document.getElementById('leftcirc'), 'click', toggle.bind(null, 'leftpanel', 'closed', 'open'));
+	addEvent (document.getElementById('leftcirc'), 'click', toggle.bind(null, 'leftpanel', 'open', 'closed'));
 	addEvent (document.getElementById('rightcirc'), 'click', toggle.bind(null, 'rightcirc', 'closed', 'open'));
-	addEvent (document.getElementById('rightcirc'), 'click', toggle.bind(null, 'rightpanel', 'closed', 'open'));
+	addEvent (document.getElementById('rightcirc'), 'click', toggle.bind(null, 'rightpanel', 'open', 'closed'));
 
 	// loop through list of photos and create hyperlink given date, title, imgURL, id
 	for (i=1; i<imgList.length+1; i++) {
