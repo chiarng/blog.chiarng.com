@@ -38,7 +38,6 @@ function exifSwap(imgURL) {
 	    		"<b>Flash: </b>" + EXIF.getTag(this,"Flash") + "<br>" +
 	    		"<b>White Balance Mode: </b>" + EXIF.getTag(this,"WhiteBalance");
 	    	document.getElementById("titleholder").innerHTML = 
-	    		//"<font size='20'>" + EXIF.getTag(this,"ImageDescription") + "</font>";
 	    		EXIF.getTag(this,"ImageDescription");
 		});
 	};
