@@ -114,6 +114,7 @@ function getHTTPObject() {
 
 // The Great Initializer
 function init() {
+
 	// load index into imgList
 	var request = getHTTPObject();
 	if (request) {
@@ -122,7 +123,7 @@ function init() {
 		request.onreadystatechange = function(){
 			if (request.readyState != 4) return false;
 			if (request.status == 200 || request.status == 304) {
-				var imgIndexRaw = (request.responseText);
+				var imgIndexRaw = (request.responseText).split(",");
 			}
 		};
 	}
