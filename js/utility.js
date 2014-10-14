@@ -14,8 +14,8 @@ function imgSwap(imgURL) {
 	document.getElementById('leftblur').style.backgroundImage = "url(" + imgURL + ")";
 	document.getElementById('rightblur').style.backgroundImage = "url(" + imgURL + ")";
 	exifSwap(imgURL);
-	commentSwap(imgURL);
 	postSwap(imgURL);
+	commentSwap(imgURL);
 };
 
 // swaps EXIF given imgURL
@@ -74,10 +74,10 @@ function postSwap(imgURL) {
 			if (request.readyState != 4) return false;
 			if (request.status == 200 || request.status == 304) {
 				document.getElementById('postholder').innerHTML = (request.responseText);
-			}
+			};
 		};
-	}
-}
+	};
+};
 
 // state toggler 
 function toggle(element1, state1, state2) {
@@ -128,8 +128,6 @@ function init() {
 	}
 
 	// grab imgTitle from individual posts
-
-	// grab imgPost from individual posts
 
 	// load latest background image
 	imgSwap(apiURL + imgList[imgList.length-1].substring(0,4) + "/" + imgList[imgList.length-1].substring(4,6) + "/" + imgList[imgList.length-1].substring(6,9) + ".jpg");
