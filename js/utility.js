@@ -3,7 +3,7 @@
 // variable declarations
 var apiURL="https://s3-us-west-1.amazonaws.com/blog.chiarng.com/img/";
 var postURL="https://s3-us-west-1.amazonaws.com/blog.chiarng.com/posts/"
-var imgList = ["20131201","20131202","20131203","20140901","20140902","20141001","20141002","20141003"];
+var imgList = [];
 var imgTitle = ["Girl1","Dish Trail","Girl3","Girl4","Girl5","Lighthouse","Rose","Sunset"];
 var imgLinks = '';
 var stopDisqusFromGoingCrazy = 0;
@@ -123,43 +123,41 @@ function init() {
 		request.onreadystatechange = function(){
 			if (request.readyState != 4) return false;
 			if (request.status == 200 || request.status == 304) {
-				var imgIndexRaw = (request.responseText).split(",");
-			}
+				var imgList = (request.responseText).split(",\n");
+				
+				// load latest background image
+				imgSwap(apiURL + imgList[imgList.length-1].substring(0,4) + "/" + imgList[imgList.length-1].substring(4,6) + "/" + imgList[imgList.length-1].substring(6,9) + ".jpg");
+
+				// resize circles to make more obvious
+				document.getElementById('leftcirc').setAttribute('data-state','closed');
+				document.getElementById('rightcirc').setAttribute('data-state','closed');
+
+				// on-off state for panels
+				addEvent (document.getElementById('leftcirc'), 'click', toggle.bind(null, 'leftcirc', 'closed', 'open'));
+				addEvent (document.getElementById('leftcirc'), 'click', toggle.bind(null, 'leftpanel', 'open', 'closed'));
+				addEvent (document.getElementById('rightcirc'), 'click', toggle.bind(null, 'rightcirc', 'closed', 'open'));
+				addEvent (document.getElementById('rightcirc'), 'click', toggle.bind(null, 'rightpanel', 'open', 'closed'));
+
+				// loop through list of photos and create hyperlinks for each date
+				for (i=1; i<imgList.length+1; i++) {
+					imgLinks = '<a href id="imglink' + i + '">' + imgList[i-1].substring(0,4) + "/" + imgList[i-1].substring(4,6) + "/" + imgList[i-1].substring(6,9) + '</a> <br>' + imgLinks;
+				};
+
+				// replace placeholder with hyperlinks
+				document.getElementById("imglinkholder").innerHTML = imgLinks;
+
+				// addEvent to the hyperlink given id and imgURL
+				for (ii=1; ii<imgList.length+1; ii++) {
+					(function (ii) {
+						addEvent (document.getElementById('imglink' + ii),'click',function(e) {
+							e.preventDefault();
+							e.stopPropagation();
+							imgSwap(apiURL + imgList[ii-1].substring(0,4) + "/" + imgList[ii-1].substring(4,6) + "/" + imgList[ii-1].substring(6,9) + ".jpg");
+						});
+					})(ii);
+				};
+			};
 		};
-	}
-
-	// grab imgTitle from individual posts
-
-	// load latest background image
-	imgSwap(apiURL + imgList[imgList.length-1].substring(0,4) + "/" + imgList[imgList.length-1].substring(4,6) + "/" + imgList[imgList.length-1].substring(6,9) + ".jpg");
-
-	// resize circles to make more obvious
-	document.getElementById('leftcirc').setAttribute('data-state','closed');
-	document.getElementById('rightcirc').setAttribute('data-state','closed');
-
-	// on-off state for panels
-	addEvent (document.getElementById('leftcirc'), 'click', toggle.bind(null, 'leftcirc', 'closed', 'open'));
-	addEvent (document.getElementById('leftcirc'), 'click', toggle.bind(null, 'leftpanel', 'open', 'closed'));
-	addEvent (document.getElementById('rightcirc'), 'click', toggle.bind(null, 'rightcirc', 'closed', 'open'));
-	addEvent (document.getElementById('rightcirc'), 'click', toggle.bind(null, 'rightpanel', 'open', 'closed'));
-
-	// loop through list of photos and create hyperlink given date, title, imgURL, id
-	for (i=1; i<imgList.length+1; i++) {
-		imgLinks = '<a href id="imglink' + i + '">' + imgTitle[i-1] + '</a> <br>' + imgLinks;
-	};
-
-	// replace placeholder with hyperlinks
-	document.getElementById("imglinkholder").innerHTML = imgLinks;
-
-	// addEvent to the hyperlink given id and imgURL
-	for (ii=1; ii<imgList.length+1; ii++) {
-		(function (ii) {
-			addEvent (document.getElementById('imglink' + ii),'click',function(e) {
-				e.preventDefault();
-				e.stopPropagation();
-				imgSwap(apiURL + imgList[ii-1].substring(0,4) + "/" + imgList[ii-1].substring(4,6) + "/" + imgList[ii-1].substring(6,9) + ".jpg");
-			});
-		})(ii);
 	};
 };
 
