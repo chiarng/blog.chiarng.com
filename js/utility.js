@@ -1,8 +1,8 @@
 // JavaScript Document
 
 // variable declarations
-var apiURL="https://blog-chiarng-com.s3-us-west-1.amazonaws.com/img/";
-var postURL="https://blog-chiarng-com.s3-us-west-1.amazonaws.com/posts/"
+var apiURL="https://blog.chiarng.com/img/";
+var postURL="https://blog.chiarng.com/posts/"
 var imgList = [];
 var imgTitle = [];
 var imgLinks = '';
@@ -50,8 +50,8 @@ function exifSwap(imgURL) {
 // swaps Disqus comments
 function commentSwap(imgURL) {
 	var disqus_shortname = 'chiarng';
-    var disqus_identifier = imgURL.substring(56,66);
-    var disqus_url = "http://blog.chiarng.com/#!" + imgURL.substring(56,66);
+    var disqus_identifier = imgURL.substring(29,39);
+    var disqus_url = "http://blog.chiarng.com/#!" + imgURL.substring(29,39);
     stopDisqusFromGoingCrazy = stopDisqusFromGoingCrazy + 1;
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -62,8 +62,8 @@ function commentSwap(imgURL) {
 		DISQUS.reset({
 			reload: true,
 			config: function () {  
-			this.page.identifier = imgURL.substring(56,66);  
-			this.page.url = "http://blog.chiarng.com/#!" + imgURL.substring(56,66);
+			this.page.identifier = imgURL.substring(29,39);  
+			this.page.url = "http://blog.chiarng.com/#!" + imgURL.substring(29,39);
 				}
 		}); 
 	};
@@ -73,7 +73,7 @@ function commentSwap(imgURL) {
 function postSwap(imgURL) {
 	var request = getHTTPObject();
 	if (request) {
-		request.open('GET', postURL + imgURL.substring(56,60) + imgURL.substring(61,63) + imgURL.substring(64,66), true);
+		request.open('GET', postURL + imgURL.substring(29,33) + imgURL.substring(34,36) + imgURL.substring(37,39), true);
 		request.send(null);
 		request.onreadystatechange = function(){
 			if (request.readyState != 4) return false;
