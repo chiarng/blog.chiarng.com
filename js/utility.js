@@ -82,6 +82,17 @@ function postSwap(imgURL) {
 	};
 };
 
+// Google Analytics
+function googlytics() {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55723373-1', 'auto');
+  ga('send', 'pageview');
+};
+
 // state toggler 
 function toggle(element1, state1, state2) {
 	var element1 = document.getElementById(element1);
@@ -162,6 +173,9 @@ function init() {
 
 				// add text to linkheader
 				document.getElementById('linkheader').innerHTML = 'Entries';
+
+				// start google analytics
+				googlytics();
 			};
 		};
 	};
