@@ -4,7 +4,7 @@
 var apiURL="https://s3-us-west-1.amazonaws.com/blog.chiarng.com/img/";
 var postURL="https://s3-us-west-1.amazonaws.com/blog.chiarng.com/posts/"
 var imgList = [];
-var imgTitle = ["Girl1","Dish Trail","Girl3","Girl4","Girl5","Lighthouse","Rose","Sunset"];
+var imgTitle = [];
 var imgLinks = '';
 var stopDisqusFromGoingCrazy = 0;
 
@@ -37,6 +37,8 @@ function exifSwap(imgURL) {
 	    		"Metering Mode: " + EXIF.getTag(this,"MeteringMode") + "<br>" +
 	    		"Flash: " + EXIF.getTag(this,"Flash") + "<br>" +
 	    		"White Balance Mode: " + EXIF.getTag(this,"WhiteBalance");
+	    	document.getElementById("titleholder").innerHTML = 
+	    		EXIF.getTag(this,"ImageDescription");
 		});
 	};
 	invImg.src = imgURL;
@@ -68,7 +70,7 @@ function commentSwap(imgURL) {
 function postSwap(imgURL) {
 	var request = getHTTPObject();
 	if (request) {
-		request.open('GET', postURL + imgURL.substring(56,60) + imgURL.substring(61,63) + imgURL.substring(64,66) + '.js', true);
+		request.open('GET', postURL + imgURL.substring(56,60) + imgURL.substring(61,63) + imgURL.substring(64,66), true);
 		request.send(null);
 		request.onreadystatechange = function(){
 			if (request.readyState != 4) return false;
@@ -118,7 +120,7 @@ function init() {
 	// load index into imgList
 	var request = getHTTPObject();
 	if (request) {
-		request.open('GET', 'https://s3-us-west-1.amazonaws.com/blog.chiarng.com/posts/index.js', true);
+		request.open('GET', postURL + 'index', true);
 		request.send(null);
 		request.onreadystatechange = function(){
 			if (request.readyState != 4) return false;

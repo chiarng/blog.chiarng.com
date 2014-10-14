@@ -242,15 +242,13 @@ p {
 
 #imglinkholder {}
 
-#exifholder {}
-
-#disqus_thread {}
+#titleholder {}
 
 #postholder {}
 
-#responsetextholder {
-	display: none;
-}
+#exifholder {}
+
+#disqus_thread {}
 
 @keyframes fadein {
     from { opacity: 0; }
