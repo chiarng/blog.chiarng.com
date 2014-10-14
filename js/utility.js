@@ -1,8 +1,8 @@
 // JavaScript Document
 
 // variable declarations
-var apiURL="https://s3-us-west-1.amazonaws.com/blog.chiarng.com/img/";
-var postURL="https://s3-us-west-1.amazonaws.com/blog.chiarng.com/posts/"
+var apiURL="https://blog.chiarng.com.s3-us-west-1.amazonaws.com/img/";
+var postURL="https://blog.chiarng.com.s3-us-west-1.amazonaws.com/posts/"
 var imgList = [];
 var imgTitle = [];
 var imgLinks = '';
@@ -21,6 +21,7 @@ function imgSwap(imgURL) {
 // swaps EXIF given imgURL
 function exifSwap(imgURL) {
 	var invImg = document.createElement('img'); 
+	invImg.crossOrigin = "Anonymous";
 	invImg.onload = function () {
 		EXIF.getData(invImg, function() {
 			var expoTime = EXIF.getTag(this,"ExposureTime");
@@ -133,8 +134,6 @@ function init() {
 	var request = getHTTPObject();
 	if (request) {
 		request.open('GET', postURL + 'index', true);
-		request.setRequestHeader('Access-Control-Allow-Headers', '*');
-		request.setRequestHeader('Access-Control-Allow-Origin', '*');
 		request.send(null);
 		request.onreadystatechange = function(){
 			if (request.readyState != 4) return false;
