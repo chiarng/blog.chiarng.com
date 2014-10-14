@@ -74,8 +74,8 @@ a:hover {
 
 #leftcirc[data-state=preload] {
 	background-color: rgba(255,255,255,0);
-	height: 150px;
-	width: 150px;
+	height: 400px;
+	width: 400px;
 }
 
 #leftcirc[data-state=closed] {
@@ -172,8 +172,8 @@ a:hover {
 
 #rightcirc[data-state=preload] {
 	background-color: rgba(255,255,255,0);
-	height: 150px;
-	width: 150px;
+	height: 400px;
+	width: 400px;
 }
 
 #rightcirc[data-state=closed] {
