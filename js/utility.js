@@ -26,18 +26,19 @@ function exifSwap(imgURL) {
 			var expoTime = EXIF.getTag(this,"ExposureTime");
 			if (expoTime < 1) {expoTime = "1/" + 1/expoTime};
 			document.getElementById("exifholder").innerHTML = 
-	    		"Camera: " + EXIF.getTag(this,"Model") + "<br>" +
-	    		"Date and Time: " + EXIF.getTag(this,"DateTimeOriginal") + "<br>" +
-	    		"F-stop: f/" + EXIF.getTag(this,"FNumber") + "<br>" +
-	    		"Exposure Time: " + expoTime + " seconds <br>" +
-	    		"ISO speed: " + EXIF.getTag(this,"ISOSpeedRatings") + "<br>" +
-	    		"Focal Length: " + EXIF.getTag(this,"FocalLength") + "<br>" +
-	    		"Exposure Program: " + EXIF.getTag(this,"ExposureProgram") + "<br>" +
-	    		"Exposure Bias: " + EXIF.getTag(this,"ExposureBias") + "<br>" +
-	    		"Metering Mode: " + EXIF.getTag(this,"MeteringMode") + "<br>" +
-	    		"Flash: " + EXIF.getTag(this,"Flash") + "<br>" +
-	    		"White Balance Mode: " + EXIF.getTag(this,"WhiteBalance");
+	    		"<b>Camera: </b>" + EXIF.getTag(this,"Model") + "<br>" +
+	    		"<b>Date and Time: </b>" + EXIF.getTag(this,"DateTimeOriginal") + "<br>" +
+	    		"<b>F-stop: </b>" + "f/" + EXIF.getTag(this,"FNumber") + "<br>" +
+	    		"<b>Exposure Time: </b>" + expoTime + " seconds <br>" +
+	    		"<b>ISO speed: </b>" + EXIF.getTag(this,"ISOSpeedRatings") + "<br>" +
+	    		"<b>Focal Length: </b>" + EXIF.getTag(this,"FocalLength") + "<br>" +
+	    		"<b>Exposure Program: </b>" + EXIF.getTag(this,"ExposureProgram") + "<br>" +
+	    		"<b>Exposure Bias: </b>" + EXIF.getTag(this,"ExposureBias") + "<br>" +
+	    		"<b>Metering Mode: </b>" + EXIF.getTag(this,"MeteringMode") + "<br>" +
+	    		"<b>Flash: </b>" + EXIF.getTag(this,"Flash") + "<br>" +
+	    		"<b>White Balance Mode: </b>" + EXIF.getTag(this,"WhiteBalance");
 	    	document.getElementById("titleholder").innerHTML = 
+	    		//"<font size='20'>" + EXIF.getTag(this,"ImageDescription") + "</font>";
 	    		EXIF.getTag(this,"ImageDescription");
 		});
 	};
@@ -158,6 +159,9 @@ function init() {
 						});
 					})(ii);
 				};
+
+				// add text to linkheader
+				document.getElementById('linkheader').innerHTML = 'Entries';
 			};
 		};
 	};

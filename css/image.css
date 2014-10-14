@@ -2,6 +2,7 @@ body {
 	margin: 0px;
 	background-color: black;
 	overflow: hidden;
+	font-family: 'Arimo', sans-serif;
 }
 
 div {
@@ -13,6 +14,15 @@ div {
 p {
 	margin: 0;
 }
+
+a:visited {
+    color: #000000;
+}
+
+a:hover {
+    color: gray;
+}
+
 
 #bg, #leftblur, #rightblur {
 	height: 100vh;
@@ -84,7 +94,7 @@ p {
 	position: fixed;
 	display: block;
 	left: 0;
-	width: 25%;
+	width: 13%;
 	height: 95%;
     padding: 1px;
     border: 1px;
@@ -233,22 +243,47 @@ p {
 	display: block;
 	height: 98%;
 	padding: 5px;
-	margin: 5px;
+	margin: 10px;
 	border: 1px;
 	overflow: auto;
 
 	z-index: 81;
 }
 
-#imglinkholder {}
+#linkheader {
+	text-align: center;
+	font-size: 150%;
+	font-weight: bold;
+}
 
-#titleholder {}
+#imglinkholder {
+	margin-top: 30px;
+	text-align: center;
+	font-size: 80%;
+	line-height: 160%;
+}
 
-#postholder {}
+#titleholder {
+	text-align: center;
+	font-size: 200%;
+	font-weight: bold;
+}
 
-#exifholder {}
+#postholder {
+	margin-top: 30px;
+	font-size: 80%;
+	line-height: 160%;
+}
 
-#disqus_thread {}
+#exifholder {
+	margin-top: 30px;
+	font-size: 80%;
+	line-height: 160%;
+}
+
+#disqus_thread {
+	margin-top: 30px;
+}
 
 @keyframes fadein {
     from { opacity: 0; }
