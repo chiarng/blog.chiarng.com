@@ -2,6 +2,7 @@
 
 // variable declarations
 var apiURL="https://s3-us-west-1.amazonaws.com/blog.chiarng.com/img/";
+var postURL="https://s3-us-west-1.amazonaws.com/blog.chiarng.com/posts/"
 var imgList = ["20131201","20131202","20131203","20140901","20140902","20141001","20141002","20141003"];
 var imgTitle = ["Girl1","Dish Trail","Girl3","Girl4","Girl5","Lighthouse","Rose","Sunset"];
 var imgLinks = '';
@@ -14,6 +15,7 @@ function imgSwap(imgURL) {
 	document.getElementById('rightblur').style.backgroundImage = "url(" + imgURL + ")";
 	exifSwap(imgURL);
 	commentSwap(imgURL);
+	postSwap(imgURL);
 };
 
 // swaps EXIF given imgURL
@@ -62,6 +64,21 @@ function commentSwap(imgURL) {
 	};
 };
 
+// grab post data
+function postSwap(imgURL) {
+	var request = getHTTPObject();
+	if (request) {
+		request.open('GET', postURL + imgURL.substring(56,60) + imgURL.substring(61,63) + imgURL.substring(64,66) + '.js', true);
+		request.send(null);
+		request.onreadystatechange = function(){
+			if (request.readyState != 4) return false;
+			if (request.status == 200 || request.status == 304) {
+				document.getElementById('postholder').innerHTML = (request.responseText);
+			}
+		};
+	}
+}
+
 // state toggler 
 function toggle(element1, state1, state2) {
 	var element1 = document.getElementById(element1);
@@ -76,7 +93,44 @@ function addEvent(element, event, func) {
 		return element.addEventListener(event, func, false);
 };
 
+// access AWS text files (credit to: https://gist.github.com/jesgundy)
+function getHTTPObject() {
+	var xhr = false;
+	if(window.XMLHttpRequest) {
+		var xhr = new XMLHttpRequest();
+	} else if(window.ActiveXObject) {
+		try {
+			var xhr = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch(e) {
+			try {
+				var xhr = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch(e) {
+				xhr = false;
+			}
+		}
+	}
+	return xhr;
+};
+
+// The Great Initializer
 function init() {
+	// load index into imgList
+	var request = getHTTPObject();
+	if (request) {
+		request.open('GET', 'https://s3-us-west-1.amazonaws.com/blog.chiarng.com/posts/index.js', true);
+		request.send(null);
+		request.onreadystatechange = function(){
+			if (request.readyState != 4) return false;
+			if (request.status == 200 || request.status == 304) {
+				var imgIndexRaw = (request.responseText);
+			}
+		};
+	}
+
+	// grab imgTitle from individual posts
+
+	// grab imgPost from individual posts
+
 	// load latest background image
 	imgSwap(apiURL + imgList[imgList.length-1].substring(0,4) + "/" + imgList[imgList.length-1].substring(4,6) + "/" + imgList[imgList.length-1].substring(6,9) + ".jpg");
 
