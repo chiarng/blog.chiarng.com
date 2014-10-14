@@ -129,9 +129,12 @@ function getHTTPObject() {
 function init() {
 
 	// load index into imgList
+
 	var request = getHTTPObject();
 	if (request) {
 		request.open('GET', postURL + 'index', true);
+		request.setRequestHeader('Access-Control-Allow-Headers', '*');
+		request.setRequestHeader('Access-Control-Allow-Origin', '*');
 		request.send(null);
 		request.onreadystatechange = function(){
 			if (request.readyState != 4) return false;
