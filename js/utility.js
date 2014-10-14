@@ -20,8 +20,10 @@ function imgSwap(imgURL) {
 
 // swaps EXIF given imgURL
 function exifSwap(imgURL) {
+	document.getElementById("titleholder").innerHTML = "";
+	document.getElementById("exifholder").innerHTML = "";
 	var invImg = document.createElement('img'); 
-	invImg.crossOrigin = "Anonymous";
+	invImg.crossOrigin = "";
 	invImg.onload = function () {
 		EXIF.getData(invImg, function() {
 			var expoTime = EXIF.getTag(this,"ExposureTime");
