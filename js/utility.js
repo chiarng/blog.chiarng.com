@@ -49,23 +49,18 @@ function exifSwap(imgURL) {
 
 // swaps Disqus comments
 function commentSwap(imgURL) {
-	var disqus_shortname = 'chiarng';
-    var disqus_identifier = imgURL.substring(28,38);
-    var disqus_url = "http://blog.chiarng.com/#!" + imgURL.substring(28,38);
-    stopDisqusFromGoingCrazy = stopDisqusFromGoingCrazy + 1;
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-	if (stopDisqusFromGoingCrazy > 1) {
+	if (typeof DISQUS != "undefined") {
 		DISQUS.reset({
 			reload: true,
 			config: function () {  
 			this.page.identifier = imgURL.substring(28,38);  
 			this.page.url = "http://blog.chiarng.com/#!" + imgURL.substring(28,38);
-				}
-		}); 
+			}
+		}); 	
+	} else {
+		setTimeout( function() {
+			commentSwap(imgURL);
+		},1000);
 	};
 };
 
@@ -137,13 +132,26 @@ function init() {
 	if (request) {
 		request.open('GET', postURL + 'index', true);
 		request.send(null);
-		request.onreadystatechange = function(){
+		request.onreadystatechange = function() {
 			if (request.readyState != 4) return false;
 			if (request.status == 200 || request.status == 304) {
 				var imgList = (request.responseText).split(",\n");
-				
+				var initImg = (apiURL + imgList[imgList.length-1].substring(0,4) + "/" + imgList[imgList.length-1].substring(4,6) + "/" + imgList[imgList.length-1].substring(6,9) + ".jpg");
+
+				// initialize Disqus
+				var disqus_shortname = 'chiarng';
+			    var disqus_identifier = initImg.substring(28,38);
+			    var disqus_url = "http://blog.chiarng.com/#!" + initImg.substring(28,38);
+				(function() {
+			    	var dsq = document.createElement('script'); 
+			    	dsq.type = 'text/javascript'; 
+			    	dsq.async = true;
+			    	dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			    	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+				})();
+
 				// load latest background image
-				imgSwap(apiURL + imgList[imgList.length-1].substring(0,4) + "/" + imgList[imgList.length-1].substring(4,6) + "/" + imgList[imgList.length-1].substring(6,9) + ".jpg");
+				imgSwap(initImg);
 
 				// resize circles to make more obvious
 				document.getElementById('leftcirc').setAttribute('data-state','closed');
