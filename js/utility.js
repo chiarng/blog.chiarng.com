@@ -179,6 +179,7 @@ function init() {
 							e.preventDefault();
 							e.stopPropagation();
 							imgSwap(apiURL + imgList[ii-1].substring(0,4) + "/" + imgList[ii-1].substring(4,6) + "/" + imgList[ii-1].substring(6,9) + ".jpg");
+							ga('send', 'event', 'button', 'click', 'photos', imgList[ii-1]);
 						});
 					})(ii);
 				};
@@ -187,7 +188,7 @@ function init() {
 				document.getElementById('linkheader').innerHTML = 'Entries';
 
 				// start google analytics
-				googlytics();
+				//googlytics();
 			};
 		};
 	};
