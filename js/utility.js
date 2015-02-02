@@ -16,6 +16,7 @@ function imgSwap(imgURL) {
 	exifSwap(imgURL);
 	postSwap(imgURL);
 	commentSwap(imgURL);
+	dlLinkSwap(imgURL);
 };
 
 // swaps EXIF given imgURL
@@ -62,6 +63,11 @@ function commentSwap(imgURL) {
 			commentSwap(imgURL);
 		},1000);
 	};
+};
+
+// swaps download link
+function dlLinkSwap(imgURL) {
+	document.getElementById('dllinkholder').innerHTML = '<a href="' + imgURL + '"' + ' id="dllinkholder' + '">Download Image</a>';
 };
 
 // grab post data
@@ -158,7 +164,7 @@ function init() {
 				};
 
 				// replace placeholder with hyperlinks
-				document.getElementById("imglinkholder").innerHTML = imgLinks;
+				document.getElementById('imglinkholder').innerHTML = imgLinks;
 
 				// addEvent to the hyperlink given id and imgURL
 				for (ii=1; ii<imgList.length+1; ii++) {

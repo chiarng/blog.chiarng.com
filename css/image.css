@@ -276,9 +276,14 @@ a:hover {
 }
 
 #exifholder {
-	margin-top: 30px;
+	margin-top: 20px;
 	font-size: 80%;
 	line-height: 160%;
+}
+
+#dllinkholder {
+	margin-top: 20px;
+	font-size: 90%;
 }
 
 #disqus_thread {
