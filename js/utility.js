@@ -67,7 +67,7 @@ function commentSwap(imgURL) {
 
 // swaps download link
 function dlLinkSwap(imgURL) {
-	document.getElementById('dllinkholder').innerHTML = '<a href="' + imgURL + '"' + ' id="dllinkholder' + '">Download Image</a>';
+	document.getElementById('dllinkholder').innerHTML = '<a href="' + imgURL + '"' + ' id="dllinkholder' + '"' +  'target="_blank' + '"">Download Image</a>';
 };
 
 // grab post data
