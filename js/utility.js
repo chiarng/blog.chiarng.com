@@ -68,7 +68,7 @@ function commentSwap(imgURL) {
 function postSwap(imgURL) {
 	var request = getHTTPObject();
 	if (request) {
-		request.open('GET', postURL + imgURL.substring(28,32) + imgURL.substring(33,35) + imgURL.substring(36,38), true);
+		request.open('GET', postURL + imgURL.substring(28,36), true);
 		request.send(null);
 		request.onreadystatechange = function(){
 			if (request.readyState != 4) return false;
@@ -125,12 +125,12 @@ function init() {
 			if (request.readyState != 4) return false;
 			if (request.status == 200 || request.status == 304) {
 				var imgList = (request.responseText).split(",\n");
-				var initImg = (apiURL + imgList[imgList.length-1].substring(0,4) + "/" + imgList[imgList.length-1].substring(4,6) + "/" + imgList[imgList.length-1].substring(6,9) + ".jpg");
+				var initImg = (apiURL + imgList[imgList.length-1] + ".jpg");
 
 				// initialize Disqus
 				var disqus_shortname = 'chiarng';
-			    var disqus_identifier = initImg.substring(28,38);
-			    var disqus_url = "http://blog.chiarng.com/#!" + initImg.substring(28,38);
+			    var disqus_identifier = initImg.substring(26,36);
+			    var disqus_url = "http://blog.chiarng.com/#!" + initImg.substring(26,36);
 				(function() {
 			    	var dsq = document.createElement('script'); 
 			    	dsq.type = 'text/javascript'; 
@@ -166,7 +166,7 @@ function init() {
 						addEvent (document.getElementById('imglink' + ii),'click',function(e) {
 							e.preventDefault();
 							e.stopPropagation();
-							imgSwap(apiURL + imgList[ii-1].substring(0,4) + "/" + imgList[ii-1].substring(4,6) + "/" + imgList[ii-1].substring(6,9) + ".jpg");
+							imgSwap(apiURL + imgList[ii-1] + ".jpg");
 							ga('send', 'event', 'button', 'click', imgList[ii-1]);
 						});
 					})(ii);
