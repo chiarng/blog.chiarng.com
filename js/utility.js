@@ -54,8 +54,8 @@ function commentSwap(imgURL) {
 		DISQUS.reset({
 			reload: true,
 			config: function () {  
-			this.page.identifier = imgURL.substring(28,32) + "/" + imgURL.substring(32,34) + "/" + imgURL.substring(34,36);  
-			this.page.url = "http://blog.chiarng.com/#!" + imgURL.substring(28,38);
+			this.page.identifier = imgURL.substring(28,34);  
+			this.page.url = "http://blog.chiarng.com/#!" + imgURL.substring(28,34);
 			}
 		}); 	
 	} else {
@@ -74,7 +74,7 @@ function dlLinkSwap(imgURL) {
 function postSwap(imgURL) {
 	var request = getHTTPObject();
 	if (request) {
-		request.open('GET', postURL + imgURL.substring(28,36), true);
+		request.open('GET', postURL + imgURL.substring(28,34), true);
 		request.send(null);
 		request.onreadystatechange = function(){
 			if (request.readyState != 4) return false;
@@ -135,8 +135,8 @@ function init() {
 
 				// initialize Disqus
 				var disqus_shortname = 'chiarng';
-			    var disqus_identifier = initImg.substring(26,36);
-			    var disqus_url = "http://blog.chiarng.com/#!" + initImg.substring(28,32) + "/" + initImg.substring(32,34) + "/" + initImg.substring(34,36);
+			    var disqus_identifier = imgList[imgList.length-1];
+			    var disqus_url = "http://blog.chiarng.com/#!" + imgList[imgList.length-1];
 				(function() {
 			    	var dsq = document.createElement('script'); 
 			    	dsq.type = 'text/javascript'; 
@@ -160,7 +160,7 @@ function init() {
 
 				// loop through list of photos and create hyperlinks for each date
 				for (i=1; i<imgList.length+1; i++) {
-					imgLinks = '<a href id="imglink' + i + '">' + imgList[i-1].substring(0,4) + "/" + imgList[i-1].substring(4,6) + "/" + imgList[i-1].substring(6,9) + '</a> <br>' + imgLinks;
+					imgLinks = '<a href id="imglink' + i + '">' + imgList[i-1] + '</a> <br>' + imgLinks;
 				};
 
 				// replace placeholder with hyperlinks
