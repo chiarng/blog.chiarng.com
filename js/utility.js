@@ -9,19 +9,18 @@ var imgLinks = '';
 var stopDisqusFromGoingCrazy = 0;
 
 // swaps background image given imgURL
-function imgSwap(imgURL) {
+function imgSwap(imgURL, jsonPost) {
 	document.getElementById('bg').style.backgroundImage = "url(" + imgURL + ")";
 	document.getElementById('leftblur').style.backgroundImage = "url(" + imgURL + ")";
 	document.getElementById('rightblur').style.backgroundImage = "url(" + imgURL + ")";
 	exifSwap(imgURL);
-	postSwap(imgURL);
+	postSwap(jsonPost);
 	commentSwap(imgURL);
 	dlLinkSwap(imgURL);
 };
 
 // swaps EXIF given imgURL
 function exifSwap(imgURL) {
-	document.getElementById("titleholder").innerHTML = "";
 	document.getElementById("exifholder").innerHTML = "";
 	var invImg = document.createElement('img'); 
 	invImg.crossOrigin = "";
@@ -41,8 +40,6 @@ function exifSwap(imgURL) {
 	    		"<b>Metering Mode: </b>" + EXIF.getTag(this,"MeteringMode") + "<br>" +
 	    		"<b>Flash: </b>" + EXIF.getTag(this,"Flash") + "<br>" +
 	    		"<b>White Balance Mode: </b>" + EXIF.getTag(this,"WhiteBalance");
-	    	document.getElementById("titleholder").innerHTML = 
-	    		EXIF.getTag(this,"ImageDescription");
 		});
 	};
 	invImg.src = imgURL;
@@ -71,18 +68,9 @@ function dlLinkSwap(imgURL) {
 };
 
 // grab post data
-function postSwap(imgURL) {
-	var request = getHTTPObject();
-	if (request) {
-		request.open('GET', postURL + imgURL.substring(28,34), true);
-		request.send(null);
-		request.onreadystatechange = function(){
-			if (request.readyState != 4) return false;
-			if (request.status == 200 || request.status == 304) {
-				document.getElementById('postholder').innerHTML = (request.responseText);
-			};
-		};
-	};
+function postSwap(jsonPost) {
+	document.getElementById("titleholder").innerHTML = jsonPost.title;
+	document.getElementById("postholder").innerHTML = jsonPost.postContent;
 };
 
 // state toggler 
@@ -132,6 +120,24 @@ function init() {
 			if (request.status == 200 || request.status == 304) {
 				var imgList = (request.responseText).split(",\n");
 				var initImg = (apiURL + imgList[imgList.length-1] + ".jpg");
+				var jsonPost = [];
+				var jsonObj = '';
+
+				// preload all post data by parsing through json
+				for (i=1; i<imgList.length+1; i++) {
+					var requestPost = getHTTPObject();
+					if (requestPost) {
+						requestPost.open('GET', postURL + imgList[i-1], true);
+						requestPost.send(null);
+						requestPost.onreadystatechange = function(){
+							if (requestPost.readyState != 4) return false;
+							if (requestPost.status == 200 || requestPost.status == 304) {
+								var jsonObj = JSON.parse(requestPost.responseText);
+							};
+						};
+						jsonPost[i] = jsonObj;
+					};
+				}
 
 				// initialize Disqus
 				var disqus_shortname = 'chiarng';
@@ -145,9 +151,6 @@ function init() {
 			    	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 				})();
 
-				// load latest background image
-				imgSwap(initImg);
-
 				// resize circles to make more obvious
 				document.getElementById('leftcirc').setAttribute('data-state','closed');
 				document.getElementById('rightcirc').setAttribute('data-state','closed');
@@ -158,9 +161,10 @@ function init() {
 				addEvent (document.getElementById('rightcirc'), 'click', toggle.bind(null, 'rightcirc', 'closed', 'open'));
 				addEvent (document.getElementById('rightcirc'), 'click', toggle.bind(null, 'rightpanel', 'open', 'closed'));
 
+
 				// loop through list of photos and create hyperlinks for each date
 				for (i=1; i<imgList.length+1; i++) {
-					imgLinks = '<a href id="imglink' + i + '">' + imgList[i-1] + '</a> <br>' + imgLinks;
+					imgLinks = '<a href id="imglink' + i + '">' + jsonPost[i].year + jsonPost[i].month + jsonPost[i].day + '</a> <br>' + imgLinks;
 				};
 
 				// replace placeholder with hyperlinks
@@ -172,7 +176,7 @@ function init() {
 						addEvent (document.getElementById('imglink' + ii),'click',function(e) {
 							e.preventDefault();
 							e.stopPropagation();
-							imgSwap(apiURL + imgList[ii-1] + ".jpg");
+							imgSwap(apiURL + imgList[ii-1] + ".jpg", jsonPost[imgList[ii-1]]);
 							ga('send', 'event', 'button', 'click', imgList[ii-1]);
 						});
 					})(ii);
@@ -180,6 +184,9 @@ function init() {
 
 				// add text to linkheader
 				document.getElementById('linkheader').innerHTML = 'Entries';
+
+				// load latest background image
+				imgSwap(initImg, jsonPost[imgList.length-1]);
 			};
 		};
 	};
