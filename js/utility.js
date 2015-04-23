@@ -170,7 +170,7 @@ function doInitPart2(imgList, jsonPost) {
 
 	// loop through list of photos and create hyperlinks for each date
 	for (i=1; i<imgList.length+1; i++) {
-		imgLinks = '<a href id="imglink' + i + '">' + jsonPost[i-1].year + jsonPost[i-1].month + jsonPost[i-1].day + '</a> <br>' + imgLinks;
+		imgLinks = '<a href id="imglink' + i + '">' + jsonPost[i-1].date.month + ' ' + jsonPost[i-1].date.day + ', ' + jsonPost[i-1].date.year + '</a> <br>' + imgLinks;
 	};
 
 	// replace placeholder with hyperlinks
