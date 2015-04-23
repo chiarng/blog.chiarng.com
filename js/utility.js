@@ -131,10 +131,12 @@ function makeJsonArray(n, imgList, jsonPost) {
 	if (n == imgList.length+1) {
 		doInitPart2(imgList, jsonPost);
 	}
-	getHTTPObject(postURL + imgList[n-1], function(rawPost) {
+	else {
+		getHTTPObject(postURL + imgList[n-1], function(rawPost) {
 		jsonPost[n-1] = JSON.parse(rawPost);
 		return makeJsonArray(n+1, imgList, jsonPost);
 	});
+	}
 };
 
 // part of init that only needs imgList
@@ -161,7 +163,7 @@ function doInitPart1(imgList) {
 	addEvent (document.getElementById('leftcirc'), 'click', toggle.bind(null, 'leftpanel', 'open', 'closed'));
 	addEvent (document.getElementById('rightcirc'), 'click', toggle.bind(null, 'rightcirc', 'closed', 'open'));
 	addEvent (document.getElementById('rightcirc'), 'click', toggle.bind(null, 'rightpanel', 'open', 'closed'));
-}
+};
 
 // part of init that needs both imgList and jsonPost
 function doInitPart2(imgList, jsonPost) {
@@ -192,7 +194,7 @@ function doInitPart2(imgList, jsonPost) {
 	// load latest background image
 	var initImg = (apiURL + imgList[imgList.length-1] + ".jpg");
 	imgSwap(initImg, jsonPost[imgList.length-1]);
-}
+};
 
 // The Great Initializer
 function init() {
