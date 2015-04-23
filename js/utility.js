@@ -1,8 +1,8 @@
 // JavaScript Document
 
 // variable declarations
-var apiURL="https://blog.chiarng.com/img/";
-var postURL="https://blog.chiarng.com/posts/"
+var apiURL="http://blog.chiarng.com/img/";
+var postURL="http://blog.chiarng.com/posts/"
 var imgList = [];
 var imgTitle = [];
 var imgLinks = '';
