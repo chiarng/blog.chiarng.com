@@ -168,6 +168,13 @@ function doInitPart1(imgList) {
 // part of init that needs both imgList and jsonPost
 function doInitPart2(imgList, jsonPost) {
 
+	// load latest background image
+	var initImg = (apiURL + imgList[imgList.length-1] + ".jpg");
+	imgSwap(initImg, jsonPost[imgList.length-1]);
+
+	// add text to linkheader
+	document.getElementById('linkheader').innerHTML = 'Entries';
+
 	// loop through list of photos and create hyperlinks for each date
 	for (i=1; i<imgList.length+1; i++) {
 		imgLinks = '<a href id="imglink' + i + '">' + jsonPost[i-1].date.month + ' ' + jsonPost[i-1].date.day + ', ' + jsonPost[i-1].date.year + '</a> <br>' + imgLinks;
@@ -187,13 +194,6 @@ function doInitPart2(imgList, jsonPost) {
 			});
 		})(ii);
 	};
-
-	// add text to linkheader
-	document.getElementById('linkheader').innerHTML = 'Entries';
-
-	// load latest background image
-	var initImg = (apiURL + imgList[imgList.length-1] + ".jpg");
-	imgSwap(initImg, jsonPost[imgList.length-1]);
 };
 
 // The Great Initializer
