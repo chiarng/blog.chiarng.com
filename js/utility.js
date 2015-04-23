@@ -1,12 +1,11 @@
 // JavaScript Document
 
 // variable declarations
-var apiURL="http://blog.chiarng.com/img/";
-var postURL="http://blog.chiarng.com/posts/"
+var apiURL="https://blog.chiarng.com/img/";
+var postURL="https://blog.chiarng.com/posts/"
 var imgList = [];
 var imgTitle = [];
 var imgLinks = '';
-var stopDisqusFromGoingCrazy = 0;
 
 // swaps background image given imgURL
 function imgSwap(imgURL, jsonPost) {
@@ -121,7 +120,6 @@ function init() {
 				var imgList = (request.responseText).split(",\n");
 				var initImg = (apiURL + imgList[imgList.length-1] + ".jpg");
 				var jsonPost = [];
-				var jsonObj = '';
 
 				// preload all post data by parsing through json
 				for (i=1; i<imgList.length+1; i++) {
@@ -132,10 +130,9 @@ function init() {
 						requestPost.onreadystatechange = function(){
 							if (requestPost.readyState != 4) return false;
 							if (requestPost.status == 200 || requestPost.status == 304) {
-								var jsonObj = JSON.parse(requestPost.responseText);
+								jsonPost[i-1] = JSON.parse(requestPost.responseText);
 							};
 						};
-						jsonPost[i] = jsonObj;
 					};
 				}
 
@@ -164,7 +161,7 @@ function init() {
 
 				// loop through list of photos and create hyperlinks for each date
 				for (i=1; i<imgList.length+1; i++) {
-					imgLinks = '<a href id="imglink' + i + '">' + jsonPost[i].year + jsonPost[i].month + jsonPost[i].day + '</a> <br>' + imgLinks;
+					imgLinks = '<a href id="imglink' + i + '">' + jsonPost[i-1].year + jsonPost[i-1].month + jsonPost[i-1].day + '</a> <br>' + imgLinks;
 				};
 
 				// replace placeholder with hyperlinks
@@ -176,7 +173,7 @@ function init() {
 						addEvent (document.getElementById('imglink' + ii),'click',function(e) {
 							e.preventDefault();
 							e.stopPropagation();
-							imgSwap(apiURL + imgList[ii-1] + ".jpg", jsonPost[imgList[ii-1]]);
+							imgSwap(apiURL + imgList[ii-1] + ".jpg", jsonPost[ii-1]);
 							ga('send', 'event', 'button', 'click', imgList[ii-1]);
 						});
 					})(ii);
