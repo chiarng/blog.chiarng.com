@@ -1,7 +1,7 @@
 // JavaScript Document
 
 // variable declarations
-var apiURL="http://blog.chiarng.com/img/";
+var photoURL="http://blog.chiarng.com/photo/";
 var postURL="http://blog.chiarng.com/posts/"
 var imgTitle = [];
 var imgLinks = '';
@@ -113,6 +113,11 @@ function getHTTPObject(url, callback) {
 	};
 };
 
+// sets up first background image only
+function getFirstImg() {
+
+}
+
 // get array of entries and callback to getJsonPosts
 function getImgList() {
 	getHTTPObject(postURL + 'index', getJsonPosts);
@@ -169,7 +174,7 @@ function doInitPart1(imgList) {
 function doInitPart2(imgList, jsonPost) {
 
 	// load latest background image
-	var initImg = (apiURL + imgList[imgList.length-1] + ".jpg");
+	var initImg = (photoURL + imgList[imgList.length-1] + ".jpg");
 	imgSwap(initImg, jsonPost[imgList.length-1]);
 
 	// add text to linkheader
@@ -189,7 +194,7 @@ function doInitPart2(imgList, jsonPost) {
 			addEvent (document.getElementById('imglink' + ii),'click',function(e) {
 				e.preventDefault();
 				e.stopPropagation();
-				imgSwap(apiURL + imgList[ii-1] + ".jpg", jsonPost[ii-1]);
+				imgSwap(photoURL + imgList[ii-1] + ".jpg", jsonPost[ii-1]);
 				ga('send', 'event', 'button', 'click', imgList[ii-1]);
 			});
 		})(ii);
