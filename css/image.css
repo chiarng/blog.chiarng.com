@@ -95,6 +95,7 @@ a:hover {
 	display: block;
 	left: 0;
 	width: 13%;
+	min-width: 160px;
 	height: 95%;
     padding: 1px;
     border: 1px;
