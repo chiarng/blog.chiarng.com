@@ -85,8 +85,8 @@ function commentSwap(imgURL) {
 		DISQUS.reset({
 			reload: true,
 			config: function () {  
-			this.page.identifier = imgURL.substring(28,34);  
-			this.page.url = "http://blog.chiarng.com/#!" + imgURL.substring(28,34);
+			this.page.identifier = imgURL.substring(30,36);  
+			this.page.url = "http://blog.chiarng.com/#!" + imgURL.substring(30,36);
 			}
 		}); 	
 	} else {
