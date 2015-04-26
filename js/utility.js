@@ -2,33 +2,47 @@
 
 // variable declarations
 var photoURL="http://blog.chiarng.com/photo/";
-var postURL="http://blog.chiarng.com/posts/"
+var postURL="http://blog.chiarng.com/posts/";
+var spinner = ""; // required declaration or else can't start/stop later
 
 // swaps background image given imgURL
 function imgSwap(imgURL, jsonPost) {
-	document.getElementById('bg').style.backgroundImage = "url(" + imgURL + ")";
-	document.getElementById('leftblur').style.backgroundImage = "url(" + imgURL + ")";
-	document.getElementById('rightblur').style.backgroundImage = "url(" + imgURL + ")";
+	document.getElementById('bg').style.backgroundImage = "none";
+	document.getElementById('leftblur').style.backgroundImage = "none";
+	document.getElementById('rightblur').style.backgroundImage = "none";
+	spinner.spin(document.getElementById('bg'));
+	bgSwap(imgURL);
 	exifSwap(imgURL);
 	postSwap(jsonPost);
 	commentSwap(imgURL);
 	dlLinkSwap(imgURL);
 };
 
+// background swapper
+function bgSwap(imgURL) {
+	var bgImg = new Image();
+	bgImg.onload = function() {
+		document.getElementById('bg').style.backgroundImage = "url(" + bgImg.src + ")";
+		document.getElementById('leftblur').style.backgroundImage = "url(" + bgImg.src + ")";
+		document.getElementById('rightblur').style.backgroundImage = "url(" + bgImg.src + ")";
+		spinner.stop();
+	};
+	bgImg.src = imgURL;
+};
 
 // spinner while loading
 function initSpin() {
 	var opts = {
-		lines: 17, // The number of lines to draw
-		length: 40, // The length of each line
+		lines: 7, // The number of lines to draw
+		length: 25, // The length of each line
 		width: 2, // The line thickness
-		radius: 60, // The radius of the inner circle
+		radius: 33, // The radius of the inner circle
 		corners: 1, // Corner roundness (0..1)
-		rotate: 0, // The rotation offset
+		rotate: 65, // The rotation offset
 		direction: 1, // 1: clockwise, -1: counterclockwise
-		color: '#000', // #rgb or #rrggbb or array of colors
-		speed: 1.2, // Rounds per second
-		trail: 100, // Afterglow percentage
+		color: '#FFF', // #rgb or #rrggbb or array of colors
+		speed: 0.7, // Rounds per second
+		trail: 46, // Afterglow percentage
 		shadow: false, // Whether to render a shadow
 		hwaccel: false, // Whether to use hardware acceleration
 		className: 'spinner', // The CSS class to assign to the spinner
@@ -36,8 +50,8 @@ function initSpin() {
 		top: '50%', // Top position relative to parent
 		left: '50%' // Left position relative to parent
 	};
-	var spinner = new Spinner(opts).spin(document.getElementById('bg').style.backgroundImage);
-}
+	spinner = new Spinner(opts).spin(document.getElementById('bg'));
+};
 
 // swaps EXIF given imgURL
 function exifSwap(imgURL) {
