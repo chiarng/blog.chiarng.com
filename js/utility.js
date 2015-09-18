@@ -1,8 +1,8 @@
 // JavaScript Document
 
 // variable declarations
-var photoURL="http://blog.chiarng.com/photo/";
-var postURL="http://blog.chiarng.com/posts/";
+var photoURL="https://blog.chiarng.com/photo/";
+var postURL="https://blog.chiarng.com/posts/";
 var spinner = ""; // required declaration or else can't start/stop later
 
 // swaps background image given imgURL
