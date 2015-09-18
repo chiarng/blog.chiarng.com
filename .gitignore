@@ -1,6 +1,7 @@
 .DS_Store
 .AppleDouble
 .LSOverride
+.s3ignore
 
 # Icon must end with two \r
 Icon
