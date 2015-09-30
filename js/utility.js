@@ -231,6 +231,14 @@ function doInitPart2(imgList, jsonPost) {
 			});
 		})(ii);
 	};
+
+	// fire event if hashtag in url
+	if (window.location.hash){
+		var hash = window.location.hash.substring(1);
+		if (hash) {
+			document.getElementById(hash).click();
+		};
+	};
 };
 
 // The Great Initializer
