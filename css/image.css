@@ -111,21 +111,21 @@ a:hover {
 #leftpanel[data-state=closed] {
 	opacity: 0;
 
-	-webkit-animation: fadeout 1.5s; /* Safari, Chrome and Opera > 12.1 */
-    -moz-animation: fadeout 1.5s; /* Firefox < 16 */
-    -ms-animation: fadeout 1.5s; /* Internet Explorer */
-    -o-animation: fadeout 1.5s; /* Opera < 12.1 */
-    animation: fadeout 1.5s;
+	-webkit-animation: fadeout 1s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadeout 1s; /* Firefox < 16 */
+    -ms-animation: fadeout 1s; /* Internet Explorer */
+    -o-animation: fadeout 1s; /* Opera < 12.1 */
+    animation: fadeout 1s;
 }
 
 #leftpanel[data-state=open] {
 	display: inherit;
 
-	-webkit-animation: fadein 1.5s; /* Safari, Chrome and Opera > 12.1 */
-    -moz-animation: fadein 1.5s; /* Firefox < 16 */
-    -ms-animation: fadein 1.5s; /* Internet Explorer */
-    -o-animation: fadein 1.5s; /* Opera < 12.1 */
-    animation: fadein 1.5s;
+	-webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 1s; /* Firefox < 16 */
+    -ms-animation: fadein 1s; /* Internet Explorer */
+    -o-animation: fadein 1s; /* Opera < 12.1 */
+    animation: fadein 1s;
 }
 
 #leftpanel[data-state=preload] {
@@ -212,21 +212,21 @@ a:hover {
 #rightpanel[data-state=closed] {
 	opacity: 0;
 
-	-webkit-animation: fadeout 1.5s; /* Safari, Chrome and Opera > 12.1 */
-    -moz-animation: fadeout 1.5s; /* Firefox < 16 */
-    -ms-animation: fadeout 1.5s; /* Internet Explorer */
-    -o-animation: fadeout 1.5s; /* Opera < 12.1 */
-    animation: fadeout 1.5s;
+	-webkit-animation: fadeout 1s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadeout 1s; /* Firefox < 16 */
+    -ms-animation: fadeout 1s; /* Internet Explorer */
+    -o-animation: fadeout 1s; /* Opera < 12.1 */
+    animation: fadeout 1s;
 }
 
 #rightpanel[data-state=open] {
 	display: inherit;
 
-	-webkit-animation: fadein 1.5s; /* Safari, Chrome and Opera > 12.1 */
-    -moz-animation: fadein 1.5s; /* Firefox < 16 */
-    -ms-animation: fadein 1.5s; /* Internet Explorer */
-    -o-animation: fadein 1.5s; /* Opera < 12.1 */
-    animation: fadein 1.5s;
+	-webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 1s; /* Firefox < 16 */
+    -ms-animation: fadein 1s; /* Internet Explorer */
+    -o-animation: fadein 1s; /* Opera < 12.1 */
+    animation: fadein 1s;
 }
 
 #rightpanel[data-state=preload] {
