@@ -191,8 +191,8 @@ function doInitPart1(imgList) {
 	})();
 
 	// resize circles to make more obvious
-	document.getElementById('leftcirc').setAttribute('data-state','closed');
-	document.getElementById('rightcirc').setAttribute('data-state','closed');
+	// document.getElementById('leftcirc').setAttribute('data-state','closed');
+	// document.getElementById('rightcirc').setAttribute('data-state','closed');
 
 	// on-off state for panels
 	addEvent (document.getElementById('leftcirc'), 'click', toggle.bind(null, 'leftcirc', 'closed', 'open'));
