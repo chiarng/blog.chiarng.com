@@ -237,6 +237,8 @@ function doInitPart2(imgList, jsonPost) {
 		var hash = window.location.hash.substring(1);
 		if (hash) {
 			document.getElementById(hash).click();
+			document.getElementById('leftcirc').click();
+			document.getElementById('rightcirc').click();
 		};
 	};
 };
