@@ -86,7 +86,7 @@ function commentSwap(imgURL) {
 			reload: true,
 			config: function () {  
 			this.page.identifier = imgURL.substring(30,36);  
-			this.page.url = "http://blog.chiarng.com/#!" + imgURL.substring(30,36);
+			this.page.url = "https://blog.chiarng.com/#!" + imgURL.substring(30,36);
 			}
 		}); 	
 	} else {
