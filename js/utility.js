@@ -181,7 +181,7 @@ function doInitPart1(imgList) {
 	// initialize Disqus
 	var disqus_shortname = 'chiarng';
     var disqus_identifier = imgList[imgList.length-1];
-    var disqus_url = "http://blog.chiarng.com/#!" + imgList[imgList.length-1];
+    var disqus_url = "https://blog.chiarng.com/#!" + imgList[imgList.length-1];
 	(function() {
     	var dsq = document.createElement('script'); 
     	dsq.type = 'text/javascript'; 
