@@ -232,7 +232,7 @@ function doInitPart2(imgList, jsonPost) {
 		})(ii);
 	};
 
-	// fire event if hashtag in url
+	// fire event if hashtag in url. (e.g. https://blog.chiarng.com/#imglink18)
 	if (window.location.hash){
 		var hash = window.location.hash.substring(1);
 		if (hash) {
